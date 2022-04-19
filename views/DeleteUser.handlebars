@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/bootstrap/bootstrap.css"/>
+<script src="/BootstrapJs/bootstrap.js"></script>
+
+<div class="container mt-3 position-relative">
+    <form>
+        <div class="card text-center w-30 position-absolute top-0 start-50 translate-middle-x">
+            <div class="card-header ">
+                Solicitud de Confirmación
+            </div>
+            <th></th>
+            <div class="card-body">
+                <h5 class="card-title">ELIMINAR</h5>
+                <h2 class="card-text">{{username}}</h2>
+                <p class="card-text"> de la lista de usuarios?</p>
+                <p class="card=text">** También se eliminarán las tareas del usuario **</p>
+                <button type="submit" class="btn btn-danger">Confirmar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    body{
+        background-color: #5e1010;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 60vh;
+    }
+    div{
+        color: white;
+    }
+    .card{
+        background-color: #2c3034;
+    }
+</style>
+
+
+
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const url = '/delete-user/?id={{user_id}}';
+        fetch(url, {
+            method: 'DELETE'
+        })
+        .then(res => {
+            if(res.status === 204){
+                window.location.href = '/Inicio';
+            }
+        })
+    })
+</script>
+</html>

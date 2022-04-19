@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/bootstrap/bootstrap.css"/>
+<link rel="stylesheet" href="/public/style.css">
+<script src="/BootstrapJs/bootstrap.js"></script>
+<body>
+
+  <body>
+    <div class="card bg-dark text-center">
+        <div class="card-body">
+            <form action="/Validate">
+            <h5 class="card-title text-center">Ingrese credenciales</h5>
+            <div class="row d-flex align-items-center mb-1">
+                <div class="col-12">Username:</div>
+                <div class="col-7 m-auto"><input type="text" name="username" class="form-control" required/></div>
+            </div>
+            <div class="row d-flex align-items-center">
+                <div class="col-12">Password:</div>
+                <div class="col-7 m-auto"><input type="password" name="password" class="form-control" required/></div>
+            </div>
+            <button class="btn bg-light my-3">Ingresar</button>
+            </form>
+    </div>
+</div>
+
+<style>
+    body{
+        background-color: #5e1010;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 60vh;
+    }
+    div{
+        color: white;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/bootstrap/bootstrap.css"/>
+<link rel="stylesheet" href="/public/style.css">
+<script src="/BootstrapJs/bootstrap.js"></script>
+<body>
+
+  <body>
+      <p hidden>{{username_id}}</p>
+    <div class="card bg-dark text-center">
+        <div class="card-body">
+            <form action="/create-task">
+                <h5 class="card-title text-center">Por favor, ingresar los datos de la nueva tarea:</h5>
+                <div class="row d-flex align-items-center mb-1">
+                    <div class="col-12">Nombre:</div>
+                    <div class="col-7 m-auto"><input type="text" name="nombreTarea" class="form-control" required/></div>
+                </div>
+                <div class="row d-flex align-items-center">
+                    <div class="col-12">Descripción:</div>
+                    <div class="col-7 m-auto"><input type="text" name="descripcionTarea" class="form-control" required/></div>
+                </div>
+                <button class="btn bg-light my-3">Ingresar</button>
+            </form>
+    </div>
+</div>
+
+<style>
+    body{
+        background-color: #5e1010;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 60vh;
+    }
+    div{
+        color: white;
+    }
+</style>
+
+<script>
+    const username_id = document.querySelector('p').innerHTML;
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (e) =>{
+        e.preventDefault();
+        const nombreTarea = document.querySelector('input[name=nombreTarea]').value;
+        const descripcionTarea = document.querySelector('input[name=descripcionTarea]').value;
+
+
+        const url = '/create-task';
+        const data = {
+            nombreTarea,
+            descripcionTarea,
+            username_id
+            };
+
+        console.log("------- DATA from FORM FETCH CREATE TASK --------");
+        console.log(data);
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if(res.status === 200){
+                    alert('Tarea creada con éxito');
+                    window.location.href = '/Inicio';
+                }
+            })
+            .catch(err => console.log(err));
+    });
+
+
+</script>
+
+</body>
+</html>

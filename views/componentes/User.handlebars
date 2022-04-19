@@ -1,0 +1,29 @@
+<table class="table table-dark table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nombre</th>
+			<th scope="col">Tarea</th>
+			<th scope="col">Fecha de Creación</th>
+			<th scope="col">Editar</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{! Cuerpo de la Tabla }}
+	</tbody>
+</table>
+
+<script>
+const getData = async () => {
+		const response = await fetch('/tareas');
+		let data = await response.json();
+		await printUserTasks(data);
+	}
+	
+	const formatDate = (date) => {
+		const dateFormat = moment(date).format("DD-MM-YYYY");
+		return `${dateFormat} `;
+	};
+	formatDate()
+	getData()
+</script>

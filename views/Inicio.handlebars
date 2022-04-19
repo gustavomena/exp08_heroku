@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/bootstrap/bootstrap.css"/>
+<link rel="stylesheet" href="/public/style.css">
+<script src="/BootstrapJs/bootstrap.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script src="/public/printAdminTasks.js"></script>
+<script src="/public/printAdminUserList.js"></script>
+<script src="/public/printUserTasks.js"></script>
+
+
+<div class="container mt-5">
+
+    {{!--  BUILT-IN HELPER PARA LA CARGA DE VISTAS --}}
+    {{#if admin}}
+    {{!-- BOTON NUEVO USUARIO --}}
+    <div class="sticky-top"> 
+		<a
+			class="btn btn-success "
+			type="button"
+			href="/create-user"
+		>
+			Nueva Usuario
+		</a>
+    </div>
+    <h1>Admin {{username}} Conectado</h1>
+    {{> Admin}}
+    {{/if}}
+    {{#if user}}
+        {{!-- BOTON NUEVA TAREA --}}
+    <div class="sticky-top"> 
+		<a
+			class="btn btn-success "
+			type="button"
+			href="/create-task/?id={{id}}"
+		>
+			Nueva Tarea
+		</a>
+    <h1>Usuario {{username}} Conectado</h1>
+    {{> User }}
+    {{/if}}
+    </div>
+</div>
+
+
+
+<style>
+    body{
+        background-color: #5e1010;
+    }
+    table{
+      text-align: center;
+    }
+</style>
+</html>
